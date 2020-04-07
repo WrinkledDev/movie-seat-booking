@@ -1,33 +1,29 @@
 const container = document.querySelector(".container");
-const movie = document.getElementById("movie");
-const seats = document.querySelectorAll(".row .seat:not(.occupied)");
-const count = document.getElementById("count");
-const total = document.getElementById("total");
+const movie = document.querySelector("#movie");
+const count = document.querySelector("#count");
 
-let totalCostSeatsDependingOnMovie = +movie.value;
+let movieCost = +movie.value;
 
-// Need to be able to register click to container
-// Need to be able to select/deselect unoccupied seats
-container.addEventListener("click", (event) => {
+console.log(movieCost);
+
+container.addEventListener("click", (e) => {
   if (
-    event.target.classList.contains("seat") &&
-    !event.target.classList.contains("occupied")
+    e.target.classList.contains("seat") &&
+    !e.target.classList.contains("occupied")
   ) {
-    event.target.classList.toggle("selected");
+    e.target.classList.toggle("selected");
   }
-  UpdateCountAndTotal();
+  updateCountAndCost();
 });
 
-// Need to be able to select movie
-movie.addEventListener("change", (event) => {
-  totalCostSeatsDependingOnMovie = event.target.value;
-  UpdateCountAndTotal();
+movie.addEventListener("change", (e) => {
+  movieCost = e.target.value;
+  updateCountAndCost();
 });
 
-// Need to be able to see seat count and total update based on cost of movie
-const UpdateCountAndTotal = () => {
-  const totalCount = document.querySelectorAll(".row .seat.selected").length;
-  count.innerText = totalCount;
-  const totalCost = totalCount * totalCostSeatsDependingOnMovie;
-  total.innerText = totalCost;
+const updateCountAndCost = () => {
+  const seatsTaken = document.querySelectorAll(".row .selected").length;
+  count.innerText = seatsTaken;
+  const totalSeatsTaken = movieCost * seatsTaken;
+  total.innerText = totalSeatsTaken;
 };
