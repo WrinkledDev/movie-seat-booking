@@ -7,7 +7,8 @@
     <title>Movie Seat Booking</title>
   </head>
   <body>
-    <div class="movin-contained">
+    <!-- MOVIE SELECTOR -->
+    <div class="movie-container">
       <label>Pick a movie:</label>
       <select id="movie">
         <option value="10">Avengers: Endgame ($10)</option>
@@ -17,6 +18,7 @@
       </select>
     </div>
 
+    <!-- SEAT LEGEND -->
     <ul class="showcase">
       <li>
         <div class="seat"></div>
@@ -31,6 +33,8 @@
         <small>Occupied</small>
       </li>
     </ul>
+
+    <!-- THEATRE SEAT GRAPHIC -->
     <div class="container">
       <div class="screen"></div>
       <div class="row">
@@ -94,9 +98,11 @@
         <div class="seat"></div>
       </div>
     </div>
+
+    <!-- SUMMARY SELECTED SEATS AND TOTAL PRICE -->
     <p class="text">
       You have selected <span id="count">0</span> seats for a price of
-      <span id="total">0</span>
+      <span id="total"> $0</span>
     </p>
     <script src="script.js"></script>
   </body>
