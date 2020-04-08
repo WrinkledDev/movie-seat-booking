@@ -1,10 +1,9 @@
 const container = document.querySelector(".container");
-const movie = document.querySelector("#movie");
+const movieSelected = document.querySelector("#movie");
 const count = document.querySelector("#count");
+const total = document.querySelector("#total");
 
-let movieCost = +movie.value;
-
-console.log(movieCost);
+let moviePrice = +movieSelected.value;
 
 container.addEventListener("click", (e) => {
   if (
@@ -13,17 +12,18 @@ container.addEventListener("click", (e) => {
   ) {
     e.target.classList.toggle("selected");
   }
-  updateCountAndCost();
+  updateTotals();
 });
 
-movie.addEventListener("change", (e) => {
-  movieCost = e.target.value;
-  updateCountAndCost();
+movieSelected.addEventListener("change", (e) => {
+  moviePrice = +e.target.value;
+  updateTotals();
 });
 
-const updateCountAndCost = () => {
-  const seatsTaken = document.querySelectorAll(".row .selected").length;
-  count.innerText = seatsTaken;
-  const totalSeatsTaken = movieCost * seatsTaken;
-  total.innerText = totalSeatsTaken;
+const updateTotals = () => {
+  const totalSeatsSelected = document.querySelectorAll(".row .seat.selected")
+    .length;
+  count.innerText = totalSeatsSelected;
+  const totalPrice = moviePrice * totalSeatsSelected;
+  total.innerText = totalPrice;
 };
